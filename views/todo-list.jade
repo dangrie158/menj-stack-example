@@ -8,13 +8,13 @@ block content
 			each item in items
 				tr
 					td
-						a(href='item/'+item.id+'/done')
-							button(style='background-color:'+item.color)=item.status?'Mark as Undone': 'Mark as Done'
+						a(href='item/#{item.id}/done')
+							button(style='background-color:#{item.color}')=item.status?'Mark as Undone': 'Mark as Done'
 							
-						a(href='item/'+item.id+'/delete')
+						a(href='item/#{item.id}/delete')
 							button delete
 					td
-						a(href='item/'+item.id)=item.title
+						a(href='item/#{item.id}')=item.title
 				
 
 	h2 Neues ToDo Anlegen
