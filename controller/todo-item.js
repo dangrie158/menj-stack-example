@@ -22,6 +22,14 @@ router.get('/:id/done', (req, res) => {
 	});
 });
 
+router.get('/:id/delete', (req, res) => {
+	var itemId = req.params.id;
+
+	ToDoItem.findByIdAndRemove(itemId, (err, item) => {
+		res.redirect('/');
+	});
+});
+
 router.post('/', (req, res) => {
 	var item = ToDoItem(req.body);
 	item.save();

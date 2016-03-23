@@ -1,14 +1,20 @@
 extend layout
 block content
 	h1 ToDo Liste
-	table
-		each item in items
-			tr
-				td
-					a(href='item/'+item.id+'/done')
-						button(style='background-color:'+item.color)=item.status?'Mark as Undone': 'Mark as Done'
-				td
-					a(href='item/'+item.id)=item.title
+	if items.length == 0
+		p No items
+	else
+		table
+			each item in items
+				tr
+					td
+						a(href='item/'+item.id+'/done')
+							button(style='background-color:'+item.color)=item.status?'Mark as Undone': 'Mark as Done'
+							
+						a(href='item/'+item.id+'/delete')
+							button delete
+					td
+						a(href='item/'+item.id)=item.title
 				
 
 	h2 Neues ToDo Anlegen
