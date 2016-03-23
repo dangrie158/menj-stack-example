@@ -1,6 +1,8 @@
-var mongoose = require('mongoose');
+"use strict";
 
-var ToDoItemSchema = new mongoose.Schema({
+let mongoose = require('mongoose');
+
+let ToDoItemSchema = new mongoose.Schema({
 	title: String,
 	description: String,
 	status: {

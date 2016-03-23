@@ -1,9 +1,13 @@
-var express = require('express'),
+"use strict";
+
+let express = require('express'),
 	app = express();
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var todoItemController = require('./controller/todo-item');
-var todoListController = require('./controller/todo-list');
+let bodyParser = require('body-parser');
+let mongoose = require('mongoose');
+let todoItemController = require('./controller/todo-item');
+let todoListController = require('./controller/todo-list');
+
+const PORT = 3000;
 
 mongoose.connect('mongodb://localhost/todo');
 
@@ -17,4 +21,10 @@ app.use(bodyParser.urlencoded({
 app.use('/item', todoItemController);
 app.use('/', todoListController);
 
-app.listen(3000);
+app.listen(PORT, (err) => {
+	if (err) {
+		console.log(err);
+		process.exit(-1);
+	}
+	console.log('listeing on Port ' + PORT);
+});

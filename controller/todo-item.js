@@ -1,27 +1,29 @@
-var router = require('express').Router();
-var ToDoItem = require('../models/todo-item');
+"use strict";
 
-router.get('/:id', function(req, res) {
+let router = require('express').Router();
+let ToDoItem = require('../models/todo-item');
+
+router.get('/:id', (req, res) => {
 	var itemId = req.params.id;
 
-	ToDoItem.findById(itemId, function(err, item) {
+	ToDoItem.findById(itemId, (err, item) => {
 		res.render('todo-item', item);
 	});
 });
 
-router.get('/:id/done', function(req, res) {
+router.get('/:id/done', (req, res) => {
 	var itemId = req.params.id;
 
-	ToDoItem.findById(itemId, function(err, item) {
+	ToDoItem.findById(itemId, (err, item) => {
 		item.status = !item.status;
-		item.save(function(err, done) {
+		item.save((err, done) => {
 			res.redirect('/');
 		});
 	});
 });
 
-router.post('/', function(req, res) {
-	item = ToDoItem(req.body);
+router.post('/', (req, res) => {
+	var item = ToDoItem(req.body);
 	item.save();
 	res.redirect('/');
 });

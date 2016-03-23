@@ -1,8 +1,10 @@
-var router = require('express').Router();
-var ToDoItems = require('../models/todo-item')
+"use strict";
 
-router.get('/', function(req, res) {
-	ToDoItems.find({}, function(err, todoItems) {
+let router = require('express').Router();
+let ToDoItems = require('../models/todo-item')
+
+router.get('/', (req, res) => {
+	ToDoItems.find({}, (err, todoItems) => {
 		res.render('todo-list', {
 			items: todoItems
 		});
