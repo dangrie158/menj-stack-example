@@ -10,7 +10,9 @@ mongoose.connect('mongodb://localhost/todo');
 app.set('views', 'views');
 app.set('view engine', 'jade');
 
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
 
 app.use('/item', todoItemController);
 app.use('/', todoListController);
