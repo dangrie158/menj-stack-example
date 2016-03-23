@@ -1,0 +1,20 @@
+extend layout
+block content
+	h1 ToDo Liste
+	table
+		each item in items
+			tr
+				td
+					a(href='item/'+item.id+'/done')
+						button(style='background-color:'+item.color)=item.status?'Mark as Undone': 'Mark as Done'
+				td
+					a(href='item/'+item.id)=item.title
+				
+
+	h2 Neues ToDo Anlegen
+	form(action='/item', method='post')
+		input(type='text', name='title', placeholder='Item Title')
+		br
+		input(type='text', name='description', placeholder='Item Description')
+		br
+		button(type='submit') Save
